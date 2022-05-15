@@ -21,7 +21,8 @@
             :title="`Are you sure you want to delete categorie: ${selectedCategorie.name}`"
             :onConfirm="() => deleteCategorie(selectedCategorie)"
         />
-        <div class="container d-flex align-items-center justify-content-start flex-wrap" style="height: fit-content;">
+        <div class="mx-auto d-flex align-items-center justify-content-start flex-wrap" style=" width: 80%; height: fit-content;">
+            <h2 class="w-100">Categories</h2>
             <FloatingButton 
                 iconName="add" 
                 xposition="right" 

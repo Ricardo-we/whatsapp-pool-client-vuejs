@@ -36,6 +36,7 @@
         top: 0px;
         left: 0px;
         width: 50px;
+        min-width: 50px;
         overflow-x: hidden;
         background-color:#27DE82;
         transition: 500ms;

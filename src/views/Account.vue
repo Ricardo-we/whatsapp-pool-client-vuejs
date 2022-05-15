@@ -3,6 +3,7 @@
 
         <NavBar/>
         <form class="form container" @submit.prevent="updateUser">
+            <h2>My account</h2>
             <Input type="text" placeholder="Username" v-model:vmodel="username"/>
             <Input type="password" placeholder="Password" v-model:vmodel="password"/>
             <Input type="tel" placeholder="Phone number" v-model:vmodel="phoneNumber"/>
@@ -15,7 +16,7 @@
     import { ref } from 'vue';
     import Input from '@/components/Input.vue';
     import NavBar from '@/components/NavBar.vue';
-    import { getLocalStorage } from '@/utils/handleLocalStorage';
+    import { getLocalStorage, setLocalStorageItem } from '@/utils/handleLocalStorage';
     import { updateUserRequest } from '@/services/user-requests';
     import { useToast } from 'vue-toastification';
     const toast = useToast();
@@ -28,7 +29,10 @@
     const updateUser = () => {
         const data = { username: username.value, password: password.value, phone_number: phoneNumber.value };
         return updateUserRequest(user, data)
-            .then(res => toast.success('User data updated!'))
+            .then(res => {
+                toast.success('User data updated!')
+                setLocalStorageItem(res);
+            })
             .catch(error => toast.error(error.toString()));
     }
 
